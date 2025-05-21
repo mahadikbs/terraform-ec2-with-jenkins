@@ -7,10 +7,10 @@ on:
 
 jobs:
       Terraform_plan:
-        uses: "mahadikbs/reusable-workflows/.github/workflows/terraform-plan.yaml@main"
+        uses: mahadikbs/reusable-workflows/.github/workflows/terraform-plan.yaml@main
         with:
           environment: prod
           runner: ubuntu-latest
         secrets:
-          aws-access-key-id: ${{secrets.AWS_ACCESS_KEY_ID}}
-          aws-secret-access-key: ${{secrets.AWS_SECRET_ACCESS_KEY}}
+          AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY_ID}}
+          AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
