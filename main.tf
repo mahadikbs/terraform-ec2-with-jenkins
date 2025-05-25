@@ -1,6 +1,6 @@
 resource "aws_key_pair" "my_key" {
     key_name = var.ssh-key-name
-    public_key = file("~/.ssh/my-ec2-key.pub")
+    public_key = file("~/.ssh/id_rsa.pub")
   
 }
 
@@ -44,7 +44,7 @@ resource "aws_instance" "terraform-test" {
     connection {
       type = "ssh"
       user = "ec2-user"
-      private_key = file("~/.ssh/my-ec2-key")
+      private_key = file("~/.ssh/id_rsa")
       host = self.public_ip
     }
 }
@@ -75,6 +75,13 @@ provisioner "remote-exec" {
      ]
   
 }
+
+    connection {
+      type = "ssh"
+      user = "ec2-user"
+      private_key = file("~/.ssh/id_rsa")
+      host = aws_instance.terraform-test.public_ip
+    }
 
 
 }
