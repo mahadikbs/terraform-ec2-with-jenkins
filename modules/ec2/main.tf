@@ -12,6 +12,6 @@ resource "aws_instance" "terraform-test" {
 }
 
 resource "template_file" "prometheus_config" {
-    
+    template = file("prometheus-conf.yml.tpl")
   
 }

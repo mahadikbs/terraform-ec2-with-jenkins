@@ -52,7 +52,7 @@ resource "aws_instance" "terraform-test" {
 # generate prometheus config file with public ip
 
 resource "template_file" "prometheus-config" {
-    template = file("prom/prometheus_config.yml.tpl")
+    template = file("prom/prometheus_conf.yml.tpl")
 
     vars = {
       PUBLIC_IP = aws_instance.terraform-test.public_ip
@@ -60,7 +60,7 @@ resource "template_file" "prometheus-config" {
 
 provisioner "remote-exec" {
     inline = [ 
-        "echo '${template_file.prometheus_config.rendered} | sudo tee /etc/prometheus/prometheus.yml"
+        "echo '${template_file.prometheus_conf.rendered} | sudo tee /etc/prometheus/prometheus.yml"
      ]
 
 }
