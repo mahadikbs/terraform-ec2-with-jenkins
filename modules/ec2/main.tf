@@ -11,7 +11,10 @@ resource "aws_instance" "terraform-test" {
   
 }
 
-resource "template_file" "prometheus_config" {
-    template = file("prometheus-conf.yml.tpl")
-  
-}
+resource "template_file" "prometheus-config" {
+    template = file("prom/prometheus_conf.yml.tpl")
+
+    vars = {
+      PUBLIC_IP = aws_instance.terraform-test.public_ip
+    }
+}    

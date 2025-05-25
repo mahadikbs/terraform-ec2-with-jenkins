@@ -60,20 +60,14 @@ resource "template_file" "prometheus-config" {
 
 provisioner "remote-exec" {
     inline = [ 
-        "echo '${template_file.prometheus_conf.rendered} | sudo tee /etc/prometheus/prometheus.yml"
-     ]
-
-}
-
-provisioner "remote-exec" {
-    inline = [ 
+        "echo '${template_file.prometheus_conf.rendered} | sudo tee /etc/prometheus/prometheus.yml",
         "sudo -u prometheus /usr/local/bin/prometheus --config.file /etc/prometheus/prometheus.yml --storage.tsdb.path /var/lib/prometheus --web.console.templates=/etc/prometheus/consoles --web.console.libraries=/etc/prometheus/console_libraries",
         "sudo cp -rv /home/ec2-user/prometheus.service /etc/systemd/system/",
         "sudo cd /home/ec2-user/",
         "sudo chmod +x install-prom2.sh",
-        "sudo ./install-prom2.sh"
+        "sudo ./install-prom2.sh"        
      ]
-  
+
 }
 
     connection {
