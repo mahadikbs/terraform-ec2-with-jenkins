@@ -13,3 +13,8 @@ variable "instance-type" {
 variable "ami-id" {
   
 }
+
+variable "security-group" {
+    type = string
+  
+}

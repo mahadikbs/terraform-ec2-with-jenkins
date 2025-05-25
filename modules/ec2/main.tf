@@ -7,6 +7,11 @@ resource "aws_instance" "terraform-test" {
     ami = var.ami-id
     instance_type = var.instance-type
     key_name = aws_key_pair.my_key.key_name
+    security_groups =  [var.security-group]   
+  
+}
+
+resource "template_file" "prometheus_config" {
     
   
 }
