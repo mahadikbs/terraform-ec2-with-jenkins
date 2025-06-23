@@ -7,7 +7,7 @@ on:
 
 jobs:
       Terraform_plan:
-        uses: mahadikbs/reusable-workflows/.github/workflows/cicd-plan.yaml@main
+        uses: mahadikbs/reusable-workflows/.github/workflows/terraform-apply.yaml@main
         with:
           environment: prod
           runner: ubuntu-latest
