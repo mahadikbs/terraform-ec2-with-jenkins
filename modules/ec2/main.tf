@@ -8,13 +8,9 @@ resource "aws_instance" "terraform-test" {
     instance_type = var.instance-type
     key_name = aws_key_pair.my_key.key_name
     security_groups =  [var.security-group]   
+
+    tags = {
+      Name = tf-jenkins-1012434
+    }
   
 }
-
-resource "template_file" "prometheus-config" {
-    template = file("prom/prometheus_conf.yml.tpl")
-
-    vars = {
-      PUBLIC_IP = aws_instance.terraform-test.public_ip
-    }
-}    

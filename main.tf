@@ -14,16 +14,11 @@ resource "aws_instance" "terraform-test" {
       Name = "tf-Jenkins-1012434"
     }
 
-    provisioner "file" {
-        source = "jenkins.sh"
-        destination = "/home/ec2-user/install-jenkins.sh"
-  } 
-
     provisioner "remote-exec" {
         inline = [ 
-            "sudo cd /home/ec2-user/",
-            "sudo chmod +x install-jenkins.sh",
-            "sudo ./install-jenkins.sh"    
+          
+          "curl -sSL \"https://raw.githubusercontent.com/mahadikbs/required-software/main/custom/jenkins_amzn_lnx.sh\" | bash"
+
          ]
     }
 
