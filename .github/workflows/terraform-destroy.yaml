@@ -11,5 +11,3 @@ jobs:
         secrets:
           AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY_ID}}
           AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
-          SSH_PRIVATE_KEY: ${{secrets.MY_PVT_KEY}}
-          SSH_PUBLIC_KEY: ${{secrets.MY_PUB_KEY}}
